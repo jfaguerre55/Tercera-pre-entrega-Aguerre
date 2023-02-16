@@ -16,14 +16,14 @@ def servicios(request):
 
         if mi_form.is_valid():
             info = mi_form.cleaned_data
-            new_alumno = Servicio(name=info['nombre'], area=info['area'], fecha_alta=info['fecha_alta'], estado=info['activo'])
-            new_alumno.save()
+            new_servicio= Servicio(name=info['nombre'], area=info['area'], fecha_alta=info['fecha_alta'], estado=info['activo'])
+            new_servicio.save()
             return redirect('inicio')
     else:
         mi_form = FormularioServicios()
-        return render(request, 'App_Servicios/servicios.html', {"formulario_servicio":mi_form})
 
-    return render(request, 'App_Servicios/servicios.html')
+    return render(request, 'App_Servicios/servicios.html', {"formulario_servicio":mi_form})
+
 
 
 def clientes(request):
@@ -32,15 +32,15 @@ def clientes(request):
 
         if mi_form.is_valid():
             info = mi_form.cleaned_data
-            new_alumno = Cliente(name=info['nombre'], cuit=info['cuit'], fecha_alta=info['fecha_alta'], domicilio=info['domicilio'], mail=info['mail'])
-            new_alumno.save()
+            new_cliente = Cliente(name=info['nombre'], cuit=info['cuit'], fecha_alta=info['fecha_alta'], domicilio=info['domicilio'], mail=info['mail'])
+            new_cliente.save()
             return redirect('inicio')
     else:
         mi_form = FormularioClientes()
-        return render(request, 'App_Servicios/clientes.html', {"formulario_cliente":mi_form})
 
-    return render(request, 'App_Servicios/clientes.html')
+    return render(request, 'App_Servicios/clientes.html', {"formulario_cliente":mi_form})
 
+    
 
 def activos(request):
     if request.method == 'POST':
@@ -48,14 +48,14 @@ def activos(request):
 
         if mi_form.is_valid():
             info = mi_form.cleaned_data
-            new_alumno = Activo(name=info['nombre'], categoria=info['categoria'], fecha_alta=info['fecha_alta'], descripcion=info['descripcion'])
-            new_alumno.save()
+            new_activo = Activo(name=info['nombre'], categoria=info['categoria'], fecha_alta=info['fecha_alta'], descripcion=info['descripcion'])
+            new_activo.save()
             return redirect('inicio')
     else:
         mi_form = FormularioActivos()
-        return render(request, 'App_Servicios/activos.html', {"formulario_activo":mi_form})
 
-    return render(request, 'App_Servicios/activos.html')
+    return render(request, 'App_Servicios/activos.html', {"formulario_activo":mi_form})
+
 
 
 def empleados(request):
@@ -64,11 +64,10 @@ def empleados(request):
 
         if mi_form.is_valid():
             info = mi_form.cleaned_data
-            new_alumno = Empleado(name=info['nombre'], age=info['edad'], legajo=info['legajo'], fecha_nac=info['fecha_nacimiento'], mail=info['mail'])
-            new_alumno.save()
+            new_empleado = Empleado(name=info['nombre'], age=info['edad'], legajo=info['legajo'], fecha_nac=info['fecha_nacimiento'], mail=info['mail'])
+            new_empleado.save()
             return redirect('inicio')
     else:
         mi_form = FormularioEmpleados()
-        return render(request, 'App_Servicios/empleados.html', {"formulario_empleado":mi_form})
-
-    return render(request, 'App_Servicios/empleados.html')
+    
+    return render(request, 'App_Servicios/empleados.html', {"formulario_empleado":mi_form})

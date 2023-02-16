@@ -20,7 +20,7 @@ class FormularioClientes(forms.Form):
 class FormularioActivos(forms.Form):
     
     nombre = forms.CharField(max_length=20)
-    categoria = forms.IntegerField()
+    categoria = forms.CharField()
     fecha_alta = forms.DateField()
     descripcion = forms.CharField()
 
@@ -29,7 +29,7 @@ class FormularioEmpleados(forms.Form):
     
     nombre = forms.CharField()
     edad = forms.IntegerField()
-    lejago = forms.IntegerField()
+    legajo = forms.IntegerField()
     fecha_nacimiento = forms.DateField()
     mail = forms.EmailField()
 

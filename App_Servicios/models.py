@@ -28,7 +28,7 @@ class Cliente(models.Model):
 class Activo(models.Model):
 
     name = models.CharField(max_length=20)
-    categoria = models.IntegerField()
+    categoria = models.CharField(max_length=20)
     fecha_alta = models.DateField()
     descripcion = models.CharField(max_length=400)
     
@@ -40,7 +40,7 @@ class Empleado(models.Model):
 
     name = models.CharField(max_length=20)
     age = models.IntegerField()
-    lejago = models.IntegerField()
+    legajo = models.IntegerField()
     fecha_nac = models.DateField()
     mail = models.EmailField()
 
