@@ -51,10 +51,11 @@ def buscar(request):
         cliente_buscado = request.GET["name"]
         clientes_resultado = Cliente.objects.filter(name__icontains=cliente_buscado)
         return render(request, 'App_Servicios/busqueda_cliente_resultados.html',{"clientes_resultado":clientes_resultado, "cliente_buscado":cliente_buscado})
-    else:
-        respuesta = 'No se encontró ningún cliente con ese nombre.'
     
-    return render(request, 'App_Servicios/busqueda_cliente_resultados.html', {"busqueda_negativa":respuesta, "cliente_buscado":cliente_buscado})
+    else:
+        respuesta = 'No ingresaste ningún nombre.'
+        
+    return render(request, 'App_Servicios/busqueda_cliente_resultados.html', {"respuesta":respuesta})
 
     
 

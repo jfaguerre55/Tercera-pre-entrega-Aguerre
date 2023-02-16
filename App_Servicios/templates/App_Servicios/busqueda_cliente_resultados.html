@@ -28,17 +28,18 @@
                 <div class="row gx-5">
                     <div class="col-lg-4 mb-5 mb-lg-0">
                         {% if cliente_buscado %}
-                            <p></p>
                             <h2 class="h4 fw-bolder">Se buscaron los clientes con el nombre: {{ cliente_buscado }}</h2>
-                            <ul>
-                            {% for cliente in clientes_resultado %}
-                                <li> {{cliente.name}}: {{cliente.cuit}} </li>
-                            {% endfor %}
-                            </ul>
-                            {% if busqueda_negativa %}
-                                <h2 class="h4 fw-bolder">Se buscaron los clientes con el nombre: {{ busqueda_negativa }}</h2>
+                            {% if clientes_resultado %}
+                                <ul>
+                                {% for cliente in clientes_resultado %}
+                                    <li> {{cliente.name}}: {{cliente.cuit}} </li>
+                                {% endfor %}
+                                </ul>
+                            {% else %}
+                                <h2 class="h4 fw-bolder">No se encontró ningún cliente con ese nombre.</h2>
                             {% endif %}
                         {% endif %}
+                        <h2 class="h4 fw-bolder">{{ respuesta }}</h2>
                     </div>
                 </div>
             </div>
