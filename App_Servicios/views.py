@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 
 from App_Servicios.models import *
-from .forms import *
+from App_Servicios.forms import *
 
 # Create your views here.
 
@@ -29,7 +29,6 @@ def servicios(request):
 def clientes(request):
     if request.method == 'POST':
         mi_form = FormularioClientes(request.POST)
-
         if mi_form.is_valid():
             info = mi_form.cleaned_data
             new_cliente = Cliente(name=info['nombre'], cuit=info['cuit'], fecha_alta=info['fecha_alta'], domicilio=info['domicilio'], mail=info['mail'])
@@ -39,6 +38,25 @@ def clientes(request):
         mi_form = FormularioClientes()
 
     return render(request, 'App_Servicios/clientes.html', {"formulario_cliente":mi_form})
+
+
+
+def busqueda_cliente(request):
+    return render(request, 'App_Servicios/busqueda_cliente.html')
+
+
+def buscar(request):
+    
+    if request.GET["name"]:
+        cliente_buscado = request.GET["name"]
+        clientes_resultado = Cliente.objects.filter(name__icontains=cliente_buscado)
+        return render(request, 'App_Servicios/busqueda_cliente_resultados.html',{"clientes_resultado":clientes_resultado, "cliente_buscado":cliente_buscado})
+    else:
+        respuesta = 'No se encontró ningún cliente con ese nombre.'
+    
+    return render(request, 'App_Servicios/busqueda_cliente_resultados.html', {"busqueda_negativa":respuesta, "cliente_buscado":cliente_buscado})
+
+    
 
     
 
