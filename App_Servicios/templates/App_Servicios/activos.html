@@ -9,12 +9,8 @@
             <div class="row gx-5 justify-content-center">
                 <div class="col-lg-6">
                     <div class="text-center my-5">
-                        <h1 class="display-5 fw-bolder text-white mb-2">Servicios de exelencia al alcance de tu industria</h1>
-                        <p class="lead text-white-50 mb-4">LLeva a cabo tus proyectos de manera ágil acompañado de los mejores profesionales del diseño, ingeniería e innovación!</p>
-                        <div class="d-grid gap-3 d-sm-flex justify-content-sm-center">
-                            <a class="btn btn-primary btn-lg px-4 me-sm-3" href="{% url 'servicios' %}">Comenzar</a>
-                            <a class="btn btn-outline-light btn-lg px-4" href="{% url 'activos' %}">Conoce más</a>
-                        </div>
+                        <h1 class="display-5 fw-bolder text-white mb-2">Nuestro equipamiento</h1>
+                        <p class="lead text-white-50 mb-4">Conoce las máquinas, el software y los recursos que tenemos para darte el mejor servicio </p>
                     </div>
                 </div>
             </div>
@@ -66,39 +62,25 @@
             </div>
         </section>
         
-        <!-- Testimonials section-->
-        <section class="py-5 border-bottom">
-            <div class="container px-5 my-5 px-5">
-                <div class="text-center mb-5">
-                    <h2 class="fw-bolder">Testimonios de clientes</h2>
-                    <p class="lead mb-0">Lo que nuestros clientes dicen de nosotros</p>
-                </div>
-                <div class="row gx-5 justify-content-center">
-                    <div class="col-lg-6">
-                        <!-- Testimonial 1-->
-                        <div class="card mb-4">
-                            <div class="card-body p-4">
-                                <div class="d-flex">
-                                    <div class="flex-shrink-0"><i class="bi bi-chat-right-quote-fill text-primary fs-1"></i></div>
-                                    <div class="ms-4">
-                                        <p class="mb-1"> Increible el producto que nos diseñaron! Muy recomendable trabajar con ellos.</p>
-                                        <div class="small text-muted">- Pedro Gomez, Argentina</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Testimonial 2-->
-                        <div class="card">
-                            <div class="card-body p-4">
-                                <div class="d-flex">
-                                    <div class="flex-shrink-0"><i class="bi bi-chat-right-quote-fill text-primary fs-1"></i></div>
-                                    <div class="ms-4">
-                                        <p class="mb-1"> Todo el equipo se esforzó mucho para llevar adelante el proyecto. Los vamos a volver a contactar!</p>
-                                        <div class="small text-muted">- Mark Bungard, Alemania</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+
+        <section class="py-5 border-bottom" id="features">
+            <div class="container px-5 my-5">
+                <div class="row gx-5">
+                    <div class="col-lg-4 mb-5 mb-lg-0">
+                        <h2 class="h4 fw-bolder">Dar de alta un nuevo activo</h2>
+                        
+                        {% if formulario_activo.errors %}
+                        <p style="color: red;"> Por favor, revise los datos ingresados.</p>
+                        {% endif %}
+        
+                        <form action="{% url 'activos' %}" method="POST">
+                            {% csrf_token %}
+                            <table>
+                                {{ formulario_activo.as_table}}
+                            </table>
+                            <input class="btn btn-primary btn-lg px-4 me-sm-3" type="submit" value="Enviar">
+        
+                        </form>
                     </div>
                 </div>
             </div>

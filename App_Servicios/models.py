@@ -5,7 +5,7 @@ from django.db import models
 class Servicio(models.Model):
 
     name = models.CharField(max_length=20)
-    area = models.IntegerField()
+    area = models.CharField(max_length=20)
     fecha_alta = models.DateField()
     estado = models.BooleanField()
 

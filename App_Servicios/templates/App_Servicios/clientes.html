@@ -9,12 +9,8 @@
             <div class="row gx-5 justify-content-center">
                 <div class="col-lg-6">
                     <div class="text-center my-5">
-                        <h1 class="display-5 fw-bolder text-white mb-2">Servicios de exelencia al alcance de tu industria</h1>
-                        <p class="lead text-white-50 mb-4">LLeva a cabo tus proyectos de manera ágil acompañado de los mejores profesionales del diseño, ingeniería e innovación!</p>
-                        <div class="d-grid gap-3 d-sm-flex justify-content-sm-center">
-                            <a class="btn btn-primary btn-lg px-4 me-sm-3" href="{% url 'servicios' %}">Comenzar</a>
-                            <a class="btn btn-outline-light btn-lg px-4" href="{% url 'activos' %}">Conoce más</a>
-                        </div>
+                        <h1 class="display-5 fw-bolder text-white mb-2">Nuestros clientes</h1>
+                        <p class="lead text-white-50 mb-4">Estos son algunos de nuestros clientes</p>
                     </div>
                 </div>
             </div>
@@ -99,6 +95,30 @@
                                 </div>
                             </div>
                         </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <section class="py-5 border-bottom" id="features">
+            <div class="container px-5 my-5">
+                <div class="row gx-5">
+                    <div class="col-lg-4 mb-5 mb-lg-0">
+                        <h2 class="h4 fw-bolder">Dar de alta un nuevo cliente</h2>
+                        
+                        {% if formulario_cliente.errors %}
+                        <p style="color: red;"> Por favor, revise los datos ingresados.</p>
+                        {% endif %}
+        
+                        <form action="{% url 'clientes' %}" method="POST">
+                            {% csrf_token %}
+                            <table>
+                                {{ formulario_cliente.as_table}}
+                            </table>
+                            <input class="btn btn-primary btn-lg px-4 me-sm-3" type="submit" value="Enviar">
+        
+                        </form>
                     </div>
                 </div>
             </div>
