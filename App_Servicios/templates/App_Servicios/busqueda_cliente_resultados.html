@@ -26,20 +26,20 @@
         <section class="py-5 border-bottom" id="features">
             <div class="container px-5 my-5">
                 <div class="row gx-5">
-                    <div class="col-lg-4 mb-5 mb-lg-0">
+                    <div class="col-lg-12 mb-5 mb-lg-0">
                         {% if cliente_buscado %}
-                            <h2 class="h4 fw-bolder">Se buscaron los clientes con el nombre: {{ cliente_buscado }}</h2>
+                            <h2 class="fw-bolder">Se buscaron los clientes con el nombre: {{ cliente_buscado }}</h2>
                             {% if clientes_resultado %}
                                 <ul>
                                 {% for cliente in clientes_resultado %}
-                                    <li> {{cliente.name}}: {{cliente.cuit}} </li>
+                                    <li> Nombre: {{cliente.name}} - CUIT: {{cliente.cuit}} </li>
                                 {% endfor %}
                                 </ul>
                             {% else %}
-                                <h2 class="h4 fw-bolder">No se encontró ningún cliente con ese nombre.</h2>
+                                <p>No se encontró ningún cliente con ese nombre.</p>
                             {% endif %}
                         {% endif %}
-                        <h2 class="h4 fw-bolder">{{ respuesta }}</h2>
+                        <p class="lead mb-0">{{ respuesta }}</p>
                     </div>
                 </div>
             </div>
